@@ -1,0 +1,69 @@
+{
+    "name": "eulerjs",
+    "version": "1.0.0",
+    "description": "My Project Euler solutions",
+    "author": "Anthony Ho",
+    "license": "MIT",
+    "scripts": {
+        "lint": "esw webpack.config.* src buildScripts --color",
+        "lint:watch": "npm run lint -- --watch",
+        "prestart": "babel-node buildScripts/startMessage.js",
+        "start": "npm-run-all --parallel lint:watch test:watch",
+        "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.spec.js\"",
+        "test:watch": "npm run test -- --watch"
+    },
+    "devDependencies": {
+        "babel-cli": "6.16.0",
+        "babel-core": "6.17.0",
+        "babel-loader": "6.2.5",
+        "babel-preset-env": "^1.7.0",
+        "babel-register": "6.16.3",
+        "chai": "3.5.0",
+        "chalk": "1.1.3",
+        "eslint": "3.8.1",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-watch": "2.1.14",
+        "mocha": "^5.2.0",
+        "npm-run-all": "^3.1.1",
+        "numeral": "1.5.3",
+        "open": "0.0.5",
+        "webpack": "^1.13.2",
+        "webpack-dev-middleware": "1.8.4",
+        "webpack-hot-middleware": "2.13.0",
+        "webpack-md5-hash": "0.0.5"
+    },
+    "babel": {
+        "presets": [
+            "env"
+        ]
+    },
+    "eslintConfig": {
+        "root": true,
+        "extends": [
+            "eslint:recommended",
+            "plugin:import/errors",
+            "plugin:import/warnings"
+        ],
+        "parserOptions": {
+            "ecmaVersion": 7,
+            "sourceType": "module"
+        },
+        "env": {
+            "browser": true,
+            "node": true,
+            "mocha": true
+        },
+        "__comment": "For overriding rules, 0 - Nothing, 1 - Warning, 2 - Error",
+        "rules": {
+            "quotes": [
+                1,
+                "double"
+            ],
+            "semi": [
+                2,
+                "always"
+            ],
+            "no-console": 0
+        }
+    }
+}
